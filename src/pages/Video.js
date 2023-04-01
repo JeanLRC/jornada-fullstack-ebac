@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import VideoFooter from "./components/footer/VideoFooter";
+import VideoSidebar from "./components/sidebar/VideoSidebar";
 import "./video.css";
 
-function Video() {
+function Video({ likes, messages, shares, name, description, music, url }) {
   const videoRef = useRef(null);
   const [play, setPlay] = useState(false);
 
@@ -23,10 +24,18 @@ function Video() {
         ref={videoRef}
         onClick={handleStart}
         loop
-        src="https://firebasestorage.googleapis.com/v0/b/video-2db61.appspot.com/o/X2Download.app-������30%20Segundos%20status������%23Shitpost%20%23Statusmemes%20%2330segundosparastatus%20%23Shitpostraiz%20%23memes(720p).mp4?alt=media&token=3aad9e8d-b49a-4ec0-bfa1-57849e1cca79"
+        src={url}
       ></video>
-      {/* Side bar */}
-      <VideoFooter />
+      <VideoSidebar 
+        likes={likes} 
+        messages={messages} 
+        shares={shares} 
+      />
+      <VideoFooter 
+        name={name}
+        description={description}
+        music={music}
+      />
     </div>
   );
 }
